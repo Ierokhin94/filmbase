@@ -1,0 +1,22 @@
+=link_to interview, class: 'list-group-item' do
+  -if interview.title?
+    .media
+      .media-body
+        %h4.media-heading
+          %b=interview.title
+          =interview.user_answers.count
+-if Interview.edit_by?(@current_user)
+  =link_to edit_interview_path(interview), class: 'btn btn-primary' do
+    =fa_icon 'edit'
+    Редактировать
+  =link_to interview, data: {method: :delete, confirm: t('helpers.sure')}, class: 'btn btn-danger' do
+    =fa_icon 'trash'
+    Удалить
+-arr = Array.new
+-interview.user_answers.each do |u|
+  -arr << u.user
+-if arr.exclude?(@current_user)
+  =link_to new_user_answer_path(interview_id: interview.id), class: 'btn btn-primary' do
+    =fa_icon 'new'
+    Пройти опроc
+%p

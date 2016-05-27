@@ -1,0 +1,9 @@
+.panel.panel-default
+  .form-group
+    -@user_answer.answers.each do |q|
+      .panel-body
+        =q.question.body
+        .panel-footer
+          %ul
+            %li
+              =q.body

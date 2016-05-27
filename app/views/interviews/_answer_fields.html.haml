@@ -1,0 +1,9 @@
+.nested-fields
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-md-5
+          .form-group
+            =f.label :Ответ
+            =f.text_area :body, class: 'form-control'
+      = link_to_remove_association "Удалить", f, class: 'btn btn-danger btn-xs'

@@ -1,0 +1,12 @@
+.page-header
+  %h1 Список опросов
+-if Interview.edit_by?(@current_user)
+  .btn-toolbar
+    =link_to new_interview_path, class: 'btn btn-primary' do
+      =fa_icon 'plus'
+      Добавить
+-if @interviews.blank?
+  .alert.alert-info Опросов не найдено
+-else
+  .list-group
+    =render @interviews

@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    %b= @interview.title
+    .pull-right
+      %h4
+        %b= @interview.user_answers.count
+  .panel-body
+    - if @interview.questions.present?
+      - @interview.questions.each do |q|
+        = q.body
+        - q.answers.each do |w|
+          .panel-footer
+            .pull-right
+              = w.user_answers.count
+            %ul
+              %li
+                = w.body

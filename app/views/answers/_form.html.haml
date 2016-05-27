@@ -1,0 +1,7 @@
+= form_for @answer do |f|
+  = error_messages_for(@answer)
+  .form-group
+    = f.label :body
+    = f.text_area :body, class 'form-contol'
+  .actions
+    = f.submit 'Save'

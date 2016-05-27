@@ -1,0 +1,13 @@
+= form_for @interview do |f|
+  = error_messages_for(@interview)
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+    
+  = f.fields_for :questions do |q|
+    = render 'question_fields', f: q
+  .links
+    = link_to_add_association "Добавить вопрос", f, :questions, class:'btn btn-primary btn-sm'
+  .actions
+  %br
+    = f.submit nil, class:'btn btn-primary btn-md'

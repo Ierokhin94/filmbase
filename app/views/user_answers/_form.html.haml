@@ -1,0 +1,16 @@
+.panel.panel-default
+  = form_tag "/user_answers" do
+    = error_messages_for(@user_answer)
+    .form-group
+      -@interview.questions.each do |t|
+        .panel-body
+          =label_tag t.body
+        .panel-footer
+          %ul
+            -t.answers.each do |q|
+              %li
+                =label_tag q.body
+                = radio_button_tag "body[#{t.id}]",q.id
+    = hidden_field_tag 'interview_id', "#{@interview.questions.first.interview.id}"
+    .actions
+      = submit_tag nil, class: 'btn btn-primary'

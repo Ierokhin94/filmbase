@@ -1,0 +1,15 @@
+= form_for @question do |f|
+  = error_messages_for(@question)
+  .form-group
+    = f.label :type
+    = f.text_area :type
+  .form-group
+    = f.label :body
+    = f.text_area :body
+
+  = f.fields_for :answers do |a|
+    = render 'answer_fields', f: a
+  .links
+    = link_to_add_association "Добавить ответ", f, :answers, class:'btn btn-primary'
+  .actions
+    = f.submit nil, class:'btn btn-primary'
